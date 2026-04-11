@@ -8,7 +8,7 @@ use App\Models\Sale;
 class SaleController extends Controller
 {
     public function index() {
-        return view('index', ['products' => []]);
+        return view('index', ['products' => collect([])]);
     }
 
     public function create() {
