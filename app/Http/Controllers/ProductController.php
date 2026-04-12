@@ -8,6 +8,24 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     /**
+     * Show the public catalog.
+     */
+    public function catalog()
+    {
+        $products = Product::latest()->get();
+        return view('catalog', compact('products'));
+    }
+
+    /**
+     * Show product detail page.
+     */
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('products.show', compact('product'));
+    }
+
+    /**
      * Show the administration panel with all products.
      */
     public function index()

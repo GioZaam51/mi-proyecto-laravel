@@ -28,7 +28,7 @@
         </h1>
         <p class="hero-sub text-white-50 mt-4 fs-6 lh-lg position-relative" style="max-width: 480px; z-index: 2; opacity: 0; animation: fadeUp 0.8s 0.7s forwards;">Moda de calidad premium para la comunidad FCA. Prendas que representan tu identidad y compromiso con la excelencia académica.</p>
         <div class="hero-actions d-flex flex-wrap gap-3 mt-5 position-relative" style="z-index: 2; opacity: 0; animation: fadeUp 0.8s 0.9s forwards;">
-            <a href="#productos" class="btn-primary-fca">Ver catálogo</a>
+            <a href="{{ route('catalog') }}" class="btn-primary-fca">Ver catálogo</a>
             <a href="/venta" class="btn-ghost-fca">Realizar venta</a>
         </div>
         <div class="hero-scroll d-none d-md-flex">
@@ -101,16 +101,19 @@
         <div class="row g-1" style="background: var(--border);">
             @forelse($products as $product)
                 <div class="col-12 col-sm-6 col-lg-3">
+                    <a href="{{ route('products.show', $product->id) }}?img_idx={{ $loop->index }}" class="text-decoration-none d-block h-100">
                     <div class="product-card h-100 position-relative border-0" data-animate style="background: var(--verde-mid); overflow: hidden; cursor: pointer;">
                         <div class="product-img-wrap" style="aspect-ratio: 3/4; overflow: hidden;">
                             <img
-                                src="https://loremflickr.com/400/600/clothing,fashion?random={{ $product->id }}"
+                                src=""
+                                data-product-img="{{ $loop->index }}"
                                 class="product-img w-100 h-100 object-fit-cover"
                                 alt="{{ $product->name }}"
                                 loading="lazy"
+                                style="background: rgba(201,168,76,0.07); object-fit: cover;"
                             >
                             <div class="product-overlay">
-                                <a href="/venta">Comprar ahora</a>
+                                <span>Ver producto</span>
                             </div>
                         </div>
                         <div class="p-4">
@@ -125,6 +128,7 @@
                             </div>
                         </div>
                     </div>
+                    </a>
                 </div>
             @empty
                 <div class="col-12">
@@ -217,5 +221,30 @@
     window.addEventListener('load', () => {
         document.getElementById('heroBadge')?.classList.add('visible');
     });
+
+    // Cargar imágenes desde DummyJSON API (ropa)
+    (async () => {
+        try {
+            const [shirts, dresses, tops] = await Promise.all([
+                fetch('https://dummyjson.com/products/category/mens-shirts?select=thumbnail').then(r => r.json()),
+                fetch('https://dummyjson.com/products/category/womens-dresses?select=thumbnail').then(r => r.json()),
+                fetch('https://dummyjson.com/products/category/tops?select=thumbnail').then(r => r.json()),
+            ]);
+            const clothingImgs = [
+                ...shirts.products,
+                ...dresses.products,
+                ...tops.products,
+            ].map(p => p.thumbnail);
+            document.querySelectorAll('[data-product-img]').forEach(img => {
+                const idx = parseInt(img.getAttribute('data-product-img')) % clothingImgs.length;
+                img.src = clothingImgs[idx];
+                img.style.objectFit = 'cover';
+            });
+        } catch (e) {
+            document.querySelectorAll('[data-product-img]').forEach(img => {
+                img.src = 'https://via.placeholder.com/400x600/0d120e/c9a84c?text=FCA';
+            });
+        }
+    })();
 </script>
 @endpush

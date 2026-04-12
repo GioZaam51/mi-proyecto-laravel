@@ -39,10 +39,25 @@
 
         <ul class="nav-links d-none d-md-flex align-items-center m-0 p-0 list-unstyled" id="navLinks" style="gap: 2.25rem;">
             <li><a href="/" class="{{ request()->is('/') ? 'active' : '' }}">Inicio</a></li>
-            <li><a href="/#productos" class="{{ request()->is('productos*') ? 'active' : '' }}">Catálogo</a></li>
+            <li><a href="{{ route('catalog') }}" class="{{ request()->routeIs('catalog') ? 'active' : '' }}">Catálogo</a></li>
             <li><a href="/nosotros" class="{{ request()->is('nosotros') ? 'active' : '' }}">Nosotros</a></li>
             <li><a href="/contacto" class="{{ request()->is('contacto') ? 'active' : '' }}">Contacto</a></li>
             
+            {{-- Carrito --}}
+            <li>
+                <a href="{{ route('cart.index') }}" class="position-relative d-flex align-items-center" style="color: var(--crema);" aria-label="Carrito">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 01-8 0"/>
+                    </svg>
+                    @php $cartCount = array_sum(array_column(session()->get('cart', []), 'quantity')); @endphp
+                    @if($cartCount > 0)
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" style="background: var(--dorado); color: var(--verde); font-family: 'Space Mono', monospace; font-size: 0.55rem; padding: 0.2em 0.4em;">{{ $cartCount }}</span>
+                    @endif
+                </a>
+            </li>
+
             @guest
                 <li><a href="{{ route('login') }}" class="btn-nav-primary">Login</a></li>
             @else
@@ -91,7 +106,7 @@
             <div class="col-6 col-md-4 col-lg-2 footer-col">
                 <h6>Tienda</h6>
                 <ul class="list-unstyled p-0 m-0">
-                    <li class="mb-2"><a href="/#productos">Catálogo</a></li>
+                    <li class="mb-2"><a href="{{ route('catalog') }}">Catálogo</a></li>
                     <li class="mb-2"><a href="#">Novedades</a></li>
                     <li class="mb-2"><a href="#">Ofertas</a></li>
                     <li class="mb-2"><a href="#">Edición limitada</a></li>
