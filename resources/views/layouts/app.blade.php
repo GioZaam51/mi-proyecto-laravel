@@ -40,9 +40,7 @@
         <ul class="nav-links d-none d-md-flex align-items-center m-0 p-0 list-unstyled" id="navLinks" style="gap: 2.25rem;">
             <li><a href="/" class="{{ request()->is('/') ? 'active' : '' }}">Inicio</a></li>
             <li><a href="{{ route('catalog') }}" class="{{ request()->routeIs('catalog') ? 'active' : '' }}">Catálogo</a></li>
-            <li><a href="/nosotros" class="{{ request()->is('nosotros') ? 'active' : '' }}">Nosotros</a></li>
-            <li><a href="/contacto" class="{{ request()->is('contacto') ? 'active' : '' }}">Contacto</a></li>
-            
+
             {{-- Carrito --}}
             <li>
                 <a href="{{ route('cart.index') }}" class="position-relative d-flex align-items-center" style="color: var(--crema);" aria-label="Carrito">
@@ -59,13 +57,26 @@
             </li>
 
             @guest
-                <li><a href="{{ route('login') }}" class="btn-nav-primary">Login</a></li>
+                {{-- Guests: Register + Login --}}
+                <li><a href="{{ route('register') }}" class="{{ request()->routeIs('register') ? 'active' : '' }}">Registrarse</a></li>
+                <li><a href="{{ route('login') }}" class="btn-nav-primary">Iniciar sesión</a></li>
             @else
-                <li><a href="{{ route('products.index') }}" class="btn-nav-primary" style="background: var(--dorado); color: var(--verde);">Panel Admin</a></li>
+                @if(Auth::user()->isAdmin())
+                    {{-- Admin --}}
+                    <li><a href="{{ route('products.index') }}" class="btn-nav-primary" style="background: var(--dorado); color: var(--verde);">Panel Admin</a></li>
+                @else
+                    {{-- Cliente logged in --}}
+                    <li>
+                        <span class="nav-user-greeting">
+                            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="me-1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            {{ Str::limit(Auth::user()->name, 18) }}
+                        </span>
+                    </li>
+                @endif
                 <li>
                     <form action="{{ route('logout') }}" method="POST" class="d-inline m-0 p-0">
                         @csrf
-                        <button type="submit" class="border-0 bg-transparent p-0 m-0 text-uppercase" style="color: var(--muted); font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; cursor: pointer;">Cerrar sesión</button>
+                        <button type="submit" class="nav-logout-btn">Cerrar sesión</button>
                     </form>
                 </li>
             @endguest
@@ -111,6 +122,7 @@
                     <li class="mb-2"><a href="#">Ofertas</a></li>
                     <li class="mb-2"><a href="#">Edición limitada</a></li>
                     @guest
+                        <li class="mb-2"><a href="{{ route('register') }}">Regístrate</a></li>
                         <li class="mb-2"><a href="{{ route('login') }}">Inicia sesión</a></li>
                     @endguest
                 </ul>

@@ -9,11 +9,11 @@
 @section('content')
 
     {{-- HEADER CATEGORY --}}
-    <div class="py-5 px-4 px-md-5 d-flex align-items-center justify-content-center position-relative" style="min-height: 45vh; background: var(--verde) url('https://loremflickr.com/1920/1080/fashion?random=200') center/cover no-repeat; border-bottom: 1px solid var(--border);">
-        <div class="position-absolute w-100 h-100 top-0 start-0" style="background: rgba(13, 18, 14, 0.7); z-index: 1;"></div>
-        <div class="position-relative text-center" style="z-index: 2;">
-            <p class="section-label text-white mb-2" style="opacity: 0; animation: fadeUp 0.8s 0.2s forwards;">— Toda la colección</p>
-            <h1 class="hero-title text-white lh-1 m-0" style="font-size: 3.5rem; opacity: 0; animation: fadeUp 0.8s 0.4s forwards;">
+    <div class="catalog-header py-5 px-4 px-md-5" style="background-image: url('{{ asset('img/banner.jpg') }}'); background-size: cover; background-position: center;">
+        <div class="catalog-header-overlay"></div>
+        <div class="catalog-header-content">
+            <p class="section-label catalog-page-label text-white mb-2">— Toda la colección</p>
+            <h1 class="hero-title catalog-page-title text-white lh-1 m-0">
                 Catálogo<br>Oficial FCA
             </h1>
         </div>
@@ -25,9 +25,6 @@
             <div>
                 <h2 class="section-title m-0">Todos los<br>Productos</h2>
                 <p class="product-count mt-3 mb-0" style="font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; color: var(--muted);">{{ $products->count() }} {{ $products->count() === 1 ? 'artículo disponible' : 'artículos disponibles' }}</p>
-            </div>
-            <div class="mt-4 mt-md-0 d-flex gap-3">
-                <a href="/venta" class="btn-ghost-fca">Realizar venta →</a>
             </div>
         </div>
 

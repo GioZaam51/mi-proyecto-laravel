@@ -4,138 +4,7 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset("css/index.css") }}">
-    <style>
-        /* ── Product Show Page ── */
-        .show-hero {
-            min-height: 100vh;
-            padding-top: 100px;
-            background: var(--verde);
-        }
-        .product-show-img {
-            width: 100%;
-            max-height: 620px;
-            object-fit: contain;
-            background: rgba(201,168,76,0.05);
-            border: 1px solid var(--border);
-            padding: 2rem;
-        }
-        .product-show-img-skeleton {
-            width: 100%;
-            height: 500px;
-            background: linear-gradient(90deg, rgba(201,168,76,0.04) 25%, rgba(201,168,76,0.10) 50%, rgba(201,168,76,0.04) 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border: 1px solid var(--border);
-        }
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        .product-show-tag {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--dorado);
-            margin-bottom: 1rem;
-        }
-        .product-show-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            font-weight: 700;
-            color: var(--crema);
-            line-height: 1.15;
-            margin-bottom: 1.25rem;
-        }
-        .product-show-price {
-            font-family: 'Space Mono', monospace;
-            font-size: 2rem;
-            color: var(--dorado);
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-        .product-show-desc {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1rem;
-            color: rgba(248,245,238,0.65);
-            line-height: 1.85;
-            max-width: 480px;
-            margin-bottom: 2rem;
-        }
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            border: 1px solid var(--border);
-            width: fit-content;
-        }
-        .quantity-control button {
-            width: 42px;
-            height: 42px;
-            background: transparent;
-            border: none;
-            color: var(--crema);
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s;
-        }
-        .quantity-control button:hover {
-            background: var(--dorado-dim);
-            color: var(--dorado);
-        }
-        .quantity-control input {
-            width: 52px;
-            height: 42px;
-            text-align: center;
-            background: transparent;
-            border: none;
-            border-left: 1px solid var(--border);
-            border-right: 1px solid var(--border);
-            color: var(--crema);
-            font-family: 'Space Mono', monospace;
-            font-size: 0.85rem;
-        }
-        .quantity-control input:focus { outline: none; }
-        .btn-add-cart {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: var(--dorado);
-            color: var(--verde);
-            font-family: 'Space Mono', monospace;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            border: none;
-            padding: 0.9rem 2rem;
-            cursor: pointer;
-            transition: opacity 0.2s, transform 0.2s;
-        }
-        .btn-add-cart:hover { opacity: 0.88; transform: translateY(-1px); }
-        .product-meta-row {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 0.12em;
-            color: var(--muted);
-            text-transform: uppercase;
-            padding: 1rem 0;
-            border-top: 1px solid var(--border);
-        }
-        .breadcrumb-fca {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.62rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 2rem;
-        }
-        .breadcrumb-fca a { color: var(--muted); text-decoration: none; }
-        .breadcrumb-fca a:hover { color: var(--dorado); }
-        .breadcrumb-fca span { color: var(--crema); }
-    </style>
+    <link rel="stylesheet" href="{{ asset("css/product-show.css") }}">
 @endpush
 
 @section('content')
@@ -143,8 +12,8 @@
     <section class="show-hero px-4 px-md-5">
 
         @if(session('success'))
-            <div class="alert border-0 py-2 px-4 mb-0" style="background: rgba(201,168,76,0.12); color: var(--dorado); font-family: 'Space Mono', monospace; font-size: 0.7rem; border-radius: 0; letter-spacing: 0.08em;">
-                ✦ {{ session('success') }}
+            <div class="show-alert alert py-2 px-4 mb-0">
+                ❖ {{ session('success') }}
             </div>
         @endif
 
@@ -173,8 +42,8 @@
             <div class="col-12 col-md-6" data-animate>
                 <p class="product-show-tag">✦ FCA Collection</p>
                 <h1 class="product-show-title">{{ $product->name }}</h1>
-                <div class="product-show-price">${{ number_format($product->price, 2) }} <span style="font-size: 0.75rem; color: var(--muted);">MXN</span></div>
-                <p style="font-family: 'Space Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 2rem;">IVA incluido</p>
+                <div class="product-show-price">${{ number_format($product->price, 2) }} <span class="product-show-price-currency">MXN</span></div>
+                <p class="product-show-tax">IVA incluido</p>
 
                 <p class="product-show-desc">{{ $product->description }}</p>
 
@@ -183,7 +52,7 @@
                     @csrf
                     <input type="hidden" name="img_idx" id="imgIdxInput" value="{{ ($product->id - 1) % 30 }}">
 
-                    <p class="mb-2" style="font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);">Cantidad</p>
+                    <p class="qty-label mb-2">Cantidad</p>
                     <div class="d-flex align-items-center flex-wrap gap-3 mb-4">
                         <div class="quantity-control">
                             <button type="button" id="qtyMinus">−</button>
@@ -216,7 +85,7 @@
                 </div>
 
                 <div class="mt-4">
-                    <a href="{{ route('catalog') }}" style="font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; text-transform: uppercase;">
+                    <a href="{{ route('catalog') }}" class="show-back-link">
                         ← Volver al catálogo
                     </a>
                 </div>

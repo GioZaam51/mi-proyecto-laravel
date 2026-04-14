@@ -26,10 +26,9 @@
         <h1 class="hero-title">
             Viste con<br><em>Orgullo</em><br>Universitario
         </h1>
-        <p class="hero-sub text-white-50 mt-4 fs-6 lh-lg position-relative" style="max-width: 480px; z-index: 2; opacity: 0; animation: fadeUp 0.8s 0.7s forwards;">Moda de calidad premium para la comunidad FCA. Prendas que representan tu identidad y compromiso con la excelencia académica.</p>
-        <div class="hero-actions d-flex flex-wrap gap-3 mt-5 position-relative" style="z-index: 2; opacity: 0; animation: fadeUp 0.8s 0.9s forwards;">
+        <p class="hero-sub text-white-50 mt-4 fs-6 lh-lg">Moda de calidad premium para la comunidad FCA. Prendas que representan tu identidad y compromiso con la excelencia académica.</p>
+        <div class="hero-actions d-flex flex-wrap gap-3 mt-5">
             <a href="{{ route('catalog') }}" class="btn-primary-fca">Ver catálogo</a>
-            <a href="/venta" class="btn-ghost-fca">Realizar venta</a>
         </div>
         <div class="hero-scroll d-none d-md-flex">
             <div class="hero-scroll-line"></div>
@@ -189,7 +188,7 @@
                     <div class="stars mb-3" style="color: var(--dorado); font-size: 0.85rem; letter-spacing: 0.1em;">★★★★☆</div>
                     <p class="testimonial-text" style="color: rgba(248, 245, 238, 0.75); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; line-height: 1.7;">"Ropa que realmente se ve diferente. Con el logo de la FCA se ve mucho más elegante de lo que esperaba. Muy buena iniciativa."</p>
                     <div class="testimonial-divider my-4" style="width: 30px; height: 1px; background: var(--border);"></div>
-                    <div class="testimonial-author text-uppercase" style="font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em;">
+                    <div class="testimolnial-author text-uppercase" style="font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em;">
                         <strong class="text-white d-block mb-1">Sofía Torres</strong>
                         <span class="uted">Licenciatura en Informática</span>
                     </div>

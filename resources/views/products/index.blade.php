@@ -10,20 +10,21 @@
             <h2 class="section-title m-0 fs-2">Tus Productos</h2>
             <p class="uted mt-2 mb-0" style="font-size: 0.9rem;">Gestión del inventario de la tienda FCA.</p>
         </div>
-        <div class="mt-4 mt-md-0">
+        <div class="mt-4 mt-md-0 d-flex gap-2">
+            <a href="{{ route('sales.index') }}" class="btn-outline-fca">Ver Ventas</a>
             <a href="{{ route('products.create') }}" class="btn-primary-fca">Registrar Nuevo Producto</a>
         </div>
     </div>
 
     @if(session('success'))
-    <div class="alert text-center fw-bold text-uppercase border-0 rounded-0 mb-4" style="background: var(--dorado-dim); color: var(--dorado); font-family: 'Space Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em;" role="alert">
-        ✦ {{ session('success') }} ✦
+    <div class="alert alert-fca-success text-center fw-bold text-uppercase mb-4" role="alert">
+        ❖ {{ session('success') }} ❖
     </div>
     @endif
 
-    <div class="table-responsive" style="border: 1px solid var(--border);">
-        <table class="table table-dark table-hover m-0" style="--bs-table-bg: var(--verde-mid); --bs-table-striped-bg: rgba(248, 245, 238, 0.02); margin-bottom: 0;">
-            <thead style="font-family: 'Space Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;">
+    <div class="table-responsive border-fca">
+        <table class="table table-dark table-hover table-fca m-0">
+            <thead class="table-fca-head">
                 <tr>
                     <th scope="col" class="py-3 px-4 border-bottom-0 text-muted" style="border-color: var(--border) !important; width: 60px;">ID</th>
                     <th scope="col" class="py-3 px-4 border-bottom-0 text-muted" style="border-color: var(--border) !important;">Nombre</th>

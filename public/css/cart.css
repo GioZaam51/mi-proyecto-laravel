@@ -1,0 +1,271 @@
+/* ══════════════════════════════════
+   CART PAGE
+══════════════════════════════════ */
+.cart-page {
+    min-height: 100vh;
+    padding-top: 110px;
+    background: var(--verde);
+}
+
+.cart-page-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--crema);
+    line-height: 1.1;
+}
+
+/* ── Cart Item ── */
+.cart-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.cart-item-img {
+    width: 100px;
+    height: 130px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+    background: rgba(201, 168, 76, 0.05);
+}
+
+.cart-item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--crema);
+    line-height: 1.3;
+}
+
+.cart-item-price {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--dorado);
+    letter-spacing: 0.05em;
+}
+
+/* ── Quantity Control ── */
+.cart-qty {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    width: fit-content;
+}
+
+.cart-qty button {
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    color: var(--crema);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.cart-qty button:hover {
+    background: var(--dorado-dim);
+}
+
+.cart-qty input {
+    width: 40px;
+    height: 32px;
+    text-align: center;
+    background: transparent;
+    border: none;
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    color: var(--crema);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+}
+
+.cart-qty input:focus {
+    outline: none;
+}
+
+.cart-remove-btn {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.cart-remove-btn:hover {
+    color: #e55;
+}
+
+/* ── Cart Update Button ── */
+.cart-update-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.cart-update-btn:hover {
+    color: var(--crema);
+    border-color: var(--dorado);
+}
+
+/* ── Summary ── */
+.cart-summary {
+    background: var(--verde-mid);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: sticky;
+    top: 100px;
+}
+
+.cart-summary-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.cart-summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(248, 245, 238, 0.7);
+    margin-bottom: 0.75rem;
+}
+
+.cart-summary-shipping {
+    color: var(--dorado);
+}
+
+.cart-summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Space Mono', monospace;
+    color: var(--crema);
+    font-size: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    margin-top: 0.5rem;
+}
+
+.cart-summary-total-amount {
+    color: var(--dorado);
+}
+
+.btn-checkout {
+    display: block;
+    width: 100%;
+    background: var(--dorado);
+    color: var(--verde);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    padding: 0.9rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 1.5rem;
+}
+
+.btn-checkout:hover {
+    opacity: 0.88;
+    color: var(--verde);
+}
+
+/* ── Cart Empty State ── */
+.cart-empty {
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.cart-empty-icon {
+    color: rgba(201, 168, 76, 0.3);
+}
+
+.cart-empty-text {
+    color: rgba(248, 245, 238, 0.5);
+    font-family: 'DM Sans', sans-serif;
+}
+
+.cart-empty-link {
+    color: var(--dorado);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+/* ── Cart Continue Link ── */
+.cart-continue-link {
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.cart-continue-link:hover {
+    color: var(--dorado);
+}
+
+/* ── Cart Notice / Secure ── */
+.cart-secure-notice {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 0.75rem;
+}
+
+/* ── Cart Item Description ── */
+.cart-item-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Cart Item Qty Info ── */
+.cart-item-qty-info {
+    font-size: 0.62rem;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+}
+
+/* ── Cart Success Notice ── */
+.cart-success-notice {
+    background: rgba(201, 168, 76, 0.12);
+    color: var(--dorado);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+}
