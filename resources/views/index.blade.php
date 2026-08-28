@@ -149,7 +149,7 @@
             <h2 class="section-title mb-4">Moda con<br>Identidad FCA</h2>
             <p class="text-white-50 lh-lg mb-5" style="max-width: 380px;">Nacimos en las aulas de la Facultad de Contaduría y Administración de la UNAM. Cada prenda lleva el orgullo de nuestra comunidad: rigor académico, estilo propio y calidad sin concesiones.</p>
             <div class="align-self-start">
-                <a href="/nosotros" class="btn-primary-fca">Conoce más</a>
+                <a href="{{ route('about') }}" class="btn-primary-fca">Conoce más</a>
             </div>
         </div>
     </section>

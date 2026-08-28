@@ -40,6 +40,7 @@
         <ul class="nav-links d-none d-md-flex align-items-center m-0 p-0 list-unstyled" id="navLinks" style="gap: 2.25rem;">
             <li><a href="/" class="{{ request()->is('/') ? 'active' : '' }}">Inicio</a></li>
             <li><a href="{{ route('catalog') }}" class="{{ request()->routeIs('catalog') ? 'active' : '' }}">Catálogo</a></li>
+            <li><a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">Sobre nosotros</a></li>
 
             {{-- Carrito --}}
             <li>
@@ -144,7 +145,7 @@
             <div class="col-6 col-md-4 col-lg-3 footer-col">
                 <h6>Institución</h6>
                 <ul class="list-unstyled p-0 m-0">
-                    <li class="mb-2"><a href="/nosotros">Acerca de</a></li>
+                    <li class="mb-2"><a href="{{ route('about') }}">Acerca de</a></li>
                     <li class="mb-2"><a href="#">FCA UNAM</a></li>
                     <li class="mb-2"><a href="#">Implementación de Sistemas</a></li>
                     <li class="mb-2"><a href="/admin/productos">Panel Admin</a></li>

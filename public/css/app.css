@@ -213,6 +213,58 @@
             font-weight: 700; line-height: 1.0; letter-spacing: 0.01em;
         }
 
+        /* ══════════════════════════════════
+           ABOUT PAGE
+        ══════════════════════════════════ */
+        .about-hero {
+            min-height: 62vh;
+            background:
+                linear-gradient(120deg, rgba(13, 18, 14, 0.94), rgba(26, 61, 43, 0.58)),
+                url('../img/banner.jpg') center/cover;
+        }
+        .about-hero-title {
+            max-width: 780px;
+            font-size: clamp(3.8rem, 10vw, 8.5rem);
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            line-height: 0.93;
+            letter-spacing: 0.01em;
+        }
+        .about-hero-title em {
+            color: var(--dorado);
+            font-style: normal;
+            font-weight: 400;
+        }
+        .about-intro {
+            border-bottom: 1px solid var(--border);
+        }
+        .about-value {
+            border: 1px solid var(--border);
+            background: var(--verde-mid);
+            transition: transform 0.25s, background 0.25s;
+        }
+        .about-value:hover {
+            background: var(--verde-light);
+            transform: translateY(-4px);
+        }
+        .about-value-number {
+            color: var(--dorado);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+        }
+        .about-quote {
+            border-left: 2px solid var(--dorado);
+            color: var(--crema);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.7rem, 3vw, 2.6rem);
+            line-height: 1.2;
+        }
+
+        @media (max-width: 768px) {
+            .about-hero { min-height: 72vh; }
+        }
+
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(28px); }
             to   { opacity: 1; transform: translateY(0); }

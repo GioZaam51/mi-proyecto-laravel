@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SaleController::class, 'index']);                                          
 Route::get('/catalogo', [ProductController::class, 'catalog'])->name('catalog');            
+Route::view('/nosotros', 'about')->name('about');
 Route::get('/productos/{id}', [ProductController::class, 'show'])->name('products.show');   
 
 // Checkout / Ventas (público)
