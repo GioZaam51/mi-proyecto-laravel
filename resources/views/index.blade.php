@@ -141,6 +141,30 @@
         </div>
     </section>
 
+    {{-- ═══ MUJERES ═══ --}}
+    <section class="women-section" id="mujeres">
+        <div class="women-intro px-4 px-md-5" data-animate>
+            <p class="women-label">— Colección para mujeres</p>
+            <h2 class="women-title">Tu estilo.<br><em>Tu voz.</em></h2>
+            <p class="women-copy">Prendas con color, carácter y libertad para llevar tu identidad FCA a tu manera.</p>
+            <a href="{{ route('catalog') }}" class="women-button">Ver colección <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="women-gallery" aria-label="Inspiración de la colección para mujeres">
+            <a class="women-look women-look-tall" href="{{ route('catalog') }}" data-animate>
+                <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?q=80&w=900&auto=format&fit=crop" alt="Prendas de color rosa" loading="lazy">
+                <span>Color que inspira</span>
+            </a>
+            <a class="women-look" href="{{ route('catalog') }}" data-animate>
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=900&auto=format&fit=crop" alt="Estilo femenino contemporáneo" loading="lazy">
+                <span>Hecho para destacar</span>
+            </a>
+            <a class="women-look women-look-wide" href="{{ route('catalog') }}" data-animate>
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop" alt="Selección de moda femenina" loading="lazy">
+                <span>Sin pedir permiso</span>
+            </a>
+        </div>
+    </section>
+
     {{-- ═══ BANNER ═══ --}}
     <section class="row g-0 border-top border-bottom" style="border-color: var(--border) !important;" id="nosotros">
         <div class="col-12 col-md-6 banner-img" style="min-height: 480px;"></div>
