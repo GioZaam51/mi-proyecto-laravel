@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [SaleController::class, 'index']);                                          
 Route::get('/catalogo', [ProductController::class, 'catalog'])->name('catalog');            
 Route::get('/productos/{id}', [ProductController::class, 'show'])->name('products.show');   
+Route::view('/nosotros', 'nosotros')->name('about');
 
 // Checkout / Ventas (público)
 Route::get('/checkout', [SaleController::class, 'create'])->name('sales.create');
