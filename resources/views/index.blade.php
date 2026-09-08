@@ -141,6 +141,62 @@
         </div>
     </section>
 
+    {{-- ═══ RECOMENDACIONES ═══ --}}
+    <section class="py-5 px-4 px-md-5 bg-dark border-bottom" style="border-color: var(--border) !important;" id="recomendaciones">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5 pb-4 border-bottom" style="border-color: var(--border) !important;">
+            <div>
+                <p class="section-label mb-2">— Selección especial</p>
+                <h2 class="section-title m-0">Recomendaciones<br>Para Ti</h2>
+                <p class="product-count mt-3 mb-0" style="font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; color: var(--muted);">NUESTROS FAVORITOS</p>
+            </div>
+            <div class="mt-4 mt-md-0">
+                <a href="{{ route('catalog') }}" class="btn-ghost-fca">Ver todos →</a>
+            </div>
+        </div>
+
+        <div class="row g-1" style="background: var(--border);">
+            @forelse($products->take(4) as $product)
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <a href="{{ route('products.show', $product->id) }}?img_idx={{ $loop->index }}" class="text-decoration-none d-block h-100">
+                    <div class="product-card h-100 position-relative border-0" data-animate style="background: var(--verde-mid); overflow: hidden; cursor: pointer;">
+                        <div class="product-img-wrap position-relative" style="aspect-ratio: 3/4; overflow: hidden;">
+                            <img
+                                src=""
+                                data-product-img="recom-{{ $loop->index }}"
+                                class="product-img w-100 h-100 object-fit-cover"
+                                alt="{{ $product->name }}"
+                                loading="lazy"
+                                style="background: rgba(201,168,76,0.07); object-fit: cover;"
+                            >
+                            <div class="position-absolute top-0 end-0 m-3" style="background: var(--dorado); color: var(--verde); padding: 0.5rem 0.75rem; font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; font-weight: bold;">★ PICK</div>
+                            <div class="product-overlay">
+                                <span>Ver producto</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="product-badge">Recomendado ✦</p>
+                            <h3 class="product-name">{{ $product->name }}</h3>
+                            <p class="product-desc">{{ Str::limit($product->description, 55) }}</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div class="product-price">${{ number_format($product->price, 2) }}</div>
+                                <div class="product-buy-icon d-flex justify-content-center align-items-center" style="width: 32px; height: 32px; border: 1px solid var(--border); color: var(--muted); transition: border-color 0.2s, color 0.2s;">
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            @empty
+                <div class="col-12">
+                    <div class="p-5 text-center" style="background: var(--verde-mid);">
+                        <p class="uted mb-0">Aún no hay productos para recomendar.</p>
+                    </div>
+                </div>
+            @endforelse
+        </div>
+    </section>
+
     {{-- ═══ MUJERES ═══ --}}
     <section class="women-section" id="mujeres">
         <div class="women-intro px-4 px-md-5" data-animate>
@@ -259,7 +315,13 @@
                 ...tops.products,
             ].map(p => p.thumbnail);
             document.querySelectorAll('[data-product-img]').forEach(img => {
-                const idx = parseInt(img.getAttribute('data-product-img')) % clothingImgs.length;
+                const dataAttr = img.getAttribute('data-product-img');
+                let idx = 0;
+                if (dataAttr.startsWith('recom-')) {
+                    idx = parseInt(dataAttr.split('-')[1]) % clothingImgs.length;
+                } else {
+                    idx = parseInt(dataAttr) % clothingImgs.length;
+                }
                 img.src = clothingImgs[idx];
                 img.style.objectFit = 'cover';
             });
